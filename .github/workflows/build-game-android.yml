@@ -34,7 +34,10 @@ jobs:
         run: cd export/release/android/bin/app/build/outputs/apk/debug && zip androidBuild.zip * && mv androidBuild.zip ${{ github.workspace }}
 
       - name: Upload Artifact to Google Drive
-	uses: actions/upload-artifact@v3
+        uses: mathisve/gdrive-upload-action@main
         with:
-          name: app-debug
-          path: androidBuild.zip
+          filename: androidBuild.zip
+          name: androidBuild.zip
+          credentials: ${{ secrets.GDRIVE_CREDENTIALS }}
+          folderId: ${{ secrets.GDRIVE_FOLDERID }}
+          encoded: true
