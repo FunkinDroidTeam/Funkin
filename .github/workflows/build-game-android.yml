@@ -30,7 +30,7 @@ jobs:
       - name: Compile
         run: haxelib run lime build android
 
-      - name: github artifact
+      - name: Upload to Github Actions
         uses: actions/upload-artifact@v3
         with:
           name: app-debug
