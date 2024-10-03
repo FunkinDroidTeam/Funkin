@@ -30,8 +30,8 @@ jobs:
       - name: Compile
         run: haxelib run lime build android
 
-      - name: Make a Zip For Upload
-        run: cd export/release/android/bin/app/build/outputs/apk/debug && zip androidBuild.zip * && mv androidBuild.zip ${{ github.workspace }}
-
-      - name: Upload Artifact to Google Drive
-      
+      - name: github artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: app-debug
+          path: export/release/android/bin/app/build/outputs/apk/debug/*
